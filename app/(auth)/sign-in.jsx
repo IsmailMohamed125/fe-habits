@@ -72,7 +72,12 @@ export default function SignIn() {
       <Text className="text-center text-slate-300 font-bold">OR</Text>
       <SignInWithOAuth
         icon={
-          <MaterialCommunityIcons name="google" size={18} color="#2E3239" />
+          <MaterialCommunityIcons
+            name="google"
+            size={20}
+            color="#2E3239"
+            style={{ position: "absolute", left: 8, top: "50%" }}
+          />
         }
       />
 

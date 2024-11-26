@@ -33,7 +33,11 @@ export default function Settings() {
           Signed in as {user?.emailAddresses[0].emailAddress}.
         </Text>
       </View>
-      <CustomButton title="Sign out" onPress={onSignOutPress} />
+      <CustomButton
+        title="Sign out"
+        onPress={onSignOutPress}
+        style={"bg-primary"}
+      />
     </ParallaxScrollView>
   );
 }
