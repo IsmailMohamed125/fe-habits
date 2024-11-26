@@ -1,9 +1,25 @@
-import { useUser } from "@clerk/clerk-expo";
+import { useAuth, useUser } from "@clerk/clerk-expo";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import ToDoList from "../../components/ToDoList";
+import { useEffect, useState } from "react";
+import { testApi } from "../../api";
 
 export default function Index() {
   const { user } = useUser();
+  const { getToken } = useAuth();
+  const [userBE, setUserBE] = useState("");
+  const [userToken, setUserToken] = useState("");
+
+  useEffect(() => {
+    async function test() {
+      const token = await getToken();
+      setUserToken(token)
+      const userData = await testApi(token);
+      setUserBE(userData);
+    }
+    test();
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-primary">
@@ -11,13 +27,7 @@ export default function Index() {
       <View>
         {user && (
           <>
-            <Text>User ID: {user.id}</Text>
-            <Text>First Name: {user.firstName}</Text>
-            <Text>Last Name: {user.lastName}</Text>
-            <Text>Full Name: {user.fullName}</Text>
-            <Text>Email Address: {user.emailAddresses?.[0]?.emailAddress}</Text>
-            <Text>Created At: {user.createdAt?.toString()}</Text>
-            <Text>Updated At: {user.updatedAt?.toString()}</Text>
+            <ToDoList userToken={userToken} />
           </>
         )}
       </View>
