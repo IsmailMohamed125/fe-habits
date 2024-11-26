@@ -107,6 +107,7 @@ export default function SignUp() {
                   name="google"
                   size={18}
                   color="#2E3239"
+                  style={{ position: "absolute", left: 8, top: "50%" }}
                 />
               }
             />
