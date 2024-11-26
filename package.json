@@ -40,6 +40,7 @@
     "react-hook-form": "^7.53.2",
     "react-native": "0.76.2",
     "react-native-dialog": "^9.3.0",
+    "react-native-fast-image": "^8.6.3",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-paper": "^5.12.5",
     "react-native-progress-wheel": "^2.1.0",

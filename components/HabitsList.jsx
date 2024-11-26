@@ -1,4 +1,5 @@
 import { View, Text, FlatList } from "react-native";
+import CatScreen from "./CatScreen";
 // import AntDesign from "@expo/vector-icons/AntDesign";
 
 export default function HabitsList({ habits }) {
