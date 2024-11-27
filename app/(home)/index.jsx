@@ -14,7 +14,11 @@ import { useAuth } from "@clerk/clerk-expo";
 import HabitsList from "../../components/HabitsList";
 import AddHabit from "../../components/AddHabit";
 import AnimatedProgressWheel from "react-native-progress-wheel";
+
 import CatScreen from "../../components/CatScreen";
+
+// import { KeyboardAvoidingView } from "react-native-web";
+
 
 export default function Index() {
   // async function callProtectedAuthRequired() {
@@ -28,10 +32,13 @@ export default function Index() {
   const [habits, setHabits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setErrorFlag] = useState(false);
+  const [reload, setReload] = useState(false);
+
   const { getToken } = useAuth();
   const onTabPress = (name) => setActive(name);
 
   useEffect(() => {
+    // eslint-disable-next-line no-undef
     const abortController = new AbortController();
 
     const fetchHabits = async () => {
@@ -57,7 +64,7 @@ export default function Index() {
       } catch (error) {
         console.log(error);
         if (abortController.signal.aborted) {
-          console.log("Data fetching cancelled");
+          console.log("Data fetching cancelled home");
         } else {
           setErrorFlag(true);
           setIsLoading(false);
@@ -69,7 +76,7 @@ export default function Index() {
 
 
     return () => abortController.abort("Data fetching cancelled");
-  }, [active, modalVisible]);
+  }, [active, modalVisible, reload]);
   // console.log(habits, "hi", active);
 
   return (
@@ -140,7 +147,7 @@ export default function Index() {
                 backgroundColor={"#A2B2EE"}
               />
             </View>
-            <HabitsList habits={habits} />
+            <HabitsList habits={habits} setReload={setReload} />
           </>
         )}
         {!isLoading && !hasError && !habits.length > 0 && (
