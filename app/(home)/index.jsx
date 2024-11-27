@@ -1,6 +1,7 @@
 import {
   ActivityIndicator,
   Modal,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -8,12 +9,13 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import TabButton from "../../components/TabButton";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import axiosInstance from "../../api";
 import { useAuth } from "@clerk/clerk-expo";
 import HabitsList from "../../components/HabitsList";
 import AddHabit from "../../components/AddHabit";
 import AnimatedProgressWheel from "react-native-progress-wheel";
+import CustomBottomSheetModal from "../../components/CustomBottomSheetModal";
 // import { KeyboardAvoidingView } from "react-native-web";
 
 export default function Index() {
@@ -29,8 +31,15 @@ export default function Index() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setErrorFlag] = useState(false);
   const [reload, setReload] = useState(false);
-
+  const [curHabit, setCurHabit] = useState({});
   const { getToken } = useAuth();
+  const bottomSheetModalRef = useRef(null);
+
+  const handlePresentModalPress = useCallback((habit) => {
+    setCurHabit(habit);
+    bottomSheetModalRef.current?.present();
+  }, []);
+
   const onTabPress = (name) => setActive(name);
 
   useEffect(() => {
@@ -71,7 +80,7 @@ export default function Index() {
     fetchHabits();
 
     return () => abortController.abort("Data fetching cancelled");
-  }, [active, modalVisible, reload]);
+  }, [active, reload]);
   // console.log(habits, "hi", active);
 
   return (
@@ -88,7 +97,6 @@ export default function Index() {
           </TouchableOpacity>
         </View>
       </View>
-
       <Modal
         animationType="slide"
         transparent={true}
@@ -96,7 +104,9 @@ export default function Index() {
         onRequestClose={() => setModalVisible(false)}
       >
         <View className="flex-1 items-center justify-center bg-[#0000008c]">
-          <AddHabit setModalVisible={setModalVisible} />
+          <View className="p-5 w-4/5 rounded-xl bg-secondary-light overflow-scroll">
+            <AddHabit setModalVisible={setModalVisible} setReload={setReload} />
+          </View>
         </View>
       </Modal>
 
@@ -104,7 +114,7 @@ export default function Index() {
         <TabButton title="Daily" onTabPress={onTabPress} active={active} />
         <TabButton title="Weekly" onTabPress={onTabPress} active={active} />
       </View>
-      <View>
+      <ScrollView>
         {isLoading && (
           <SafeAreaView className="absolute right-1/2 top-1/2">
             <ActivityIndicator size="large" color="#5F7ADB" />
@@ -141,13 +151,22 @@ export default function Index() {
                 backgroundColor={"#A2B2EE"}
               />
             </View>
-            <HabitsList habits={habits} setReload={setReload} />
+            <HabitsList
+              habits={habits}
+              setReload={setReload}
+              handlePresentModalPress={handlePresentModalPress}
+            />
+            <CustomBottomSheetModal
+              curHabit={curHabit}
+              ref={bottomSheetModalRef}
+              setReload={setReload}
+            />
           </>
         )}
         {!isLoading && !hasError && !habits.length > 0 && (
           <Text>Add some habits</Text>
         )}
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

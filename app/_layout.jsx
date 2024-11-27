@@ -5,6 +5,8 @@ import "../global.css";
 import { useEffect } from "react";
 import { setStatusBarStyle } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 SplashScreen.preventAutoHideAsync();
 // eslint-disable-next-line no-undef
@@ -55,7 +57,11 @@ export default function RootLayout() {
   return (
     <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <ClerkLoaded>
-        <Slot />
+        <GestureHandlerRootView>
+          <BottomSheetModalProvider>
+            <Slot />
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
       </ClerkLoaded>
     </ClerkProvider>
   );
