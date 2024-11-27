@@ -1,10 +1,14 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Pressable, ScrollView } from "react-native";
 import Checkbox from "expo-checkbox";
 import { useState } from "react";
 import { useAuth } from "@clerk/clerk-expo";
 import axiosInstance from "../api";
 
-export default function HabitsList({ habits, setReload }) {
+export default function HabitsList({
+  habits,
+  setReload,
+  handlePresentModalPress,
+}) {
   const [habitsData, setHabitsData] = useState(habits);
   const { getToken } = useAuth();
 
@@ -53,6 +57,11 @@ export default function HabitsList({ habits, setReload }) {
     }
   }
 
+  // function handleHabitPress(habit) {
+  //   setCurHabit(habit);
+  //   // handlePresentModalPress();
+  // }
+
   const renderItem = ({ item }) => {
     return (
       <View
@@ -63,7 +72,9 @@ export default function HabitsList({ habits, setReload }) {
         }
         key={item._id}
       >
-        <Text className="text-primary-dark text-xl">{item.name}</Text>
+        <Pressable onPress={() => handlePresentModalPress(item)}>
+          <Text className="text-primary-dark text-xl">{item.name}</Text>
+        </Pressable>
         <Checkbox
           style={{ margin: 8 }}
           value={item.completed}
@@ -80,6 +91,7 @@ export default function HabitsList({ habits, setReload }) {
         data={habitsData}
         renderItem={renderItem}
         keyExtractor={(item) => item._id}
+        scrollEnabled={false}
       />
     </View>
   );
