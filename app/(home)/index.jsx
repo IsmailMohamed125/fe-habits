@@ -20,7 +20,6 @@ import CustomBottomSheetModal from "../../components/CustomBottomSheetModal";
 
 // import { KeyboardAvoidingView } from "react-native-web";
 
-
 export default function Index() {
   // async function callProtectedAuthRequired() {
   //   const token = await window.Clerk.session.getToken({
@@ -37,6 +36,9 @@ export default function Index() {
   const [curHabit, setCurHabit] = useState({});
   const { getToken } = useAuth();
   const bottomSheetModalRef = useRef(null);
+
+  const completedHabits = habits.filter((habit) => habit.completed === true);
+  const progress = (completedHabits.length * 100) / habits.length;
 
   const handlePresentModalPress = useCallback((habit) => {
     setCurHabit(habit);
@@ -81,7 +83,6 @@ export default function Index() {
     };
 
     fetchHabits();
-
 
     return () => abortController.abort("Data fetching cancelled");
   }, [active, reload]);
@@ -128,18 +129,14 @@ export default function Index() {
         {!isLoading && !hasError && habits.length > 0 && (
           <>
             <View className="items-center my-3">
-              <CatScreen habits={habits} />
+              <CatScreen progress={progress} />
               <AnimatedProgressWheel
                 size={170}
                 width={20}
                 color={"#5F7ADB"}
                 max={100}
                 rotation={"-90deg"}
-                progress={
-                  (habits.filter((habit) => habit.completed === true).length *
-                    100) /
-                  habits.length
-                }
+                progress={progress}
                 subtitle={"Completed"}
                 showProgressLabel={true}
                 showPercentageSymbol={true}
