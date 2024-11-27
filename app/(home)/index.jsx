@@ -15,8 +15,11 @@ import { useAuth } from "@clerk/clerk-expo";
 import HabitsList from "../../components/HabitsList";
 import AddHabit from "../../components/AddHabit";
 import AnimatedProgressWheel from "react-native-progress-wheel";
+import CatScreen from "../../components/CatScreen";
 import CustomBottomSheetModal from "../../components/CustomBottomSheetModal";
+
 // import { KeyboardAvoidingView } from "react-native-web";
+
 
 export default function Index() {
   // async function callProtectedAuthRequired() {
@@ -79,6 +82,7 @@ export default function Index() {
 
     fetchHabits();
 
+
     return () => abortController.abort("Data fetching cancelled");
   }, [active, reload]);
   // console.log(habits, "hi", active);
@@ -124,6 +128,7 @@ export default function Index() {
         {!isLoading && !hasError && habits.length > 0 && (
           <>
             <View className="items-center my-3">
+              <CatScreen habits={habits} />
               <AnimatedProgressWheel
                 size={170}
                 width={20}

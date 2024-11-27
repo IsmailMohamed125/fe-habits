@@ -1,4 +1,5 @@
 import { View, Text, FlatList, Pressable, ScrollView } from "react-native";
+
 import Checkbox from "expo-checkbox";
 import { useState } from "react";
 import { useAuth } from "@clerk/clerk-expo";
