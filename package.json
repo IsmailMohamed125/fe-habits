@@ -57,9 +57,15 @@
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.2",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-router-dom": "^7.0.1",
 =======
 >>>>>>> 63b4f1aae4093f57374cea8d77c5083788611546
+=======
+
+    "react-router-dom": "^7.0.1",
+
+>>>>>>> 32183d832b9aeef17509c9443b93ae9346ec5e07
     "tailwindcss": "^3.4.15"
   },
   "devDependencies": {
