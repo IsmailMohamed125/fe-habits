@@ -1,5 +1,6 @@
 import {
   ActivityIndicator,
+  KeyboardAvoidingView,
   Modal,
   ScrollView,
   Text,
@@ -17,6 +18,10 @@ import AddHabit from "../../components/AddHabit";
 import AnimatedProgressWheel from "react-native-progress-wheel";
 import CatScreen from "../../components/CatScreen";
 import CustomBottomSheetModal from "../../components/CustomBottomSheetModal";
+import {
+  scheduleDailyNotification,
+  setupNotification,
+} from "../../utils/notification";
 
 // import { KeyboardAvoidingView } from "react-native-web";
 
@@ -88,10 +93,19 @@ export default function Index() {
   }, [active, reload]);
   // console.log(habits, "hi", active);
 
+  useEffect(() => {
+    const setupDailyNotifications = async () => {
+      console.log("Setting up daily notification...");
+      await setupNotification(16, 00);
+    };
+
+    setupDailyNotifications();
+  }, []);
+
   return (
-    <SafeAreaView className="flex-1 bg-primary">
+    <SafeAreaView className="flex-1 bg-primary ">
       <View className="flex-row items-center justify-between mx-3">
-        <Text className="text-3xl font-bold text-slate-300">Habits App</Text>
+        <Text className="text-3xl font-pblack text-slate-300">Cabitly</Text>
         <View className="">
           <TouchableOpacity
             onPress={() => {
@@ -109,7 +123,7 @@ export default function Index() {
         onRequestClose={() => setModalVisible(false)}
       >
         <View className="flex-1 items-center justify-center bg-[#0000008c]">
-          <View className="p-5 w-4/5 rounded-xl bg-secondary-light overflow-scroll">
+          <View className=" p-5 w-4/5 rounded-xl bg-secondary-light overflow-scroll">
             <AddHabit setModalVisible={setModalVisible} setReload={setReload} />
           </View>
         </View>
@@ -144,11 +158,13 @@ export default function Index() {
                   color: "#cbd5e1",
                   fontSize: 20,
                   fontWeight: "bold",
+                  fontFamily: "Poppins-SemiBold, sans-serif",
                 }}
                 subtitleStyle={{
                   color: "#cbd5e1",
                   fontSize: 16,
                   fontWeight: "500",
+                  fontFamily: "Poppins-SemiBold, sans-serif",
                 }}
                 backgroundColor={"#A2B2EE"}
               />

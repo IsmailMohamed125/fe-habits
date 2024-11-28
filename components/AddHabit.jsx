@@ -120,9 +120,13 @@ const AddHabit = ({ setModalVisible, setReload, habit }) => {
 
   return (
     <>
-      <Text style={styles.title}>{habit ? "Edit habit" : "Add habit"}</Text>
+      <Text style={styles.title} className="font-psemibold">
+        {habit ? "Edit habit" : "Add habit"}
+      </Text>
       <View>
-        <Text style={styles.groupLabel}>Habit name:</Text>
+        <Text style={styles.groupLabel} className="font-psemibold">
+          Habit name:
+        </Text>
         <Controller
           control={control}
           defaultValue=""
@@ -132,6 +136,7 @@ const AddHabit = ({ setModalVisible, setReload, habit }) => {
               onChangeText={(value) => onChange(value)}
               value={value}
               style={styles.input}
+              className="font-psemibold"
               placeholder="Enter habit name"
               placeholderTextColor="#64748b"
             />
@@ -140,7 +145,9 @@ const AddHabit = ({ setModalVisible, setReload, habit }) => {
       </View>
 
       <View>
-        <Text style={styles.groupLabel}>Build or break:</Text>
+        <Text style={styles.groupLabel} className="font-psemibold">
+          Build or break:
+        </Text>
         <Controller
           control={control}
           defaultValue=""
@@ -164,7 +171,9 @@ const AddHabit = ({ setModalVisible, setReload, habit }) => {
         />
       </View>
       <View>
-        <Text style={styles.groupLabel}>Frequency:</Text>
+        <Text style={styles.groupLabel} className="font-psemibold">
+          Frequency:
+        </Text>
         <Controller
           control={control}
           defaultValue=""
@@ -188,7 +197,9 @@ const AddHabit = ({ setModalVisible, setReload, habit }) => {
         />
       </View>
       <View>
-        <Text style={styles.groupLabel}>Difficulty:</Text>
+        <Text style={styles.groupLabel} className="font-psemibold">
+          Difficulty:
+        </Text>
         <Controller
           control={control}
           defaultValue=""
@@ -245,7 +256,7 @@ const AddHabit = ({ setModalVisible, setReload, habit }) => {
               className="py-3 px-5 rounded-lg bg-slate-400"
               onPress={() => setModalVisible(false)}
             >
-              <Text className="font-medium text-lg text-center text-primary-dark">
+              <Text className="font-pmedium text-lg text-center text-primary-dark">
                 Close
               </Text>
             </TouchableOpacity>
@@ -253,7 +264,7 @@ const AddHabit = ({ setModalVisible, setReload, habit }) => {
               className="p-3 rounded-lg bg-slate-300"
               onPress={handleSubmit(onSubmit)}
             >
-              <Text className="font-semibold text-lg text-center text-primary-dark">
+              <Text className="font-psemibold text-lg text-center text-primary-dark">
                 Submit
               </Text>
             </TouchableOpacity>
@@ -276,7 +287,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 10,
     textAlign: "center",
     color: "#26292B",
   },
@@ -285,7 +296,7 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderRadius: 5,
     padding: 10,
-    marginBottom: 20,
+    marginBottom: 15,
     width: "100%",
     backgroundColor: "#cbd5e1",
   },

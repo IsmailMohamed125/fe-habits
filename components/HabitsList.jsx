@@ -68,13 +68,15 @@ export default function HabitsList({
       <View
         className={
           item.completed
-            ? "flex-row items-center justify-between p-4 rounded-lg bg-secondary mb-4"
+            ? "flex-row items-center justify-between p-4 rounded-lg bg-secondary mb-4 "
             : "flex-row items-center justify-between p-4 rounded-lg bg-secondary-light mb-4"
         }
         key={item._id}
       >
         <Pressable onPress={() => handlePresentModalPress(item)}>
-          <Text className="text-primary-dark text-xl">{item.name}</Text>
+          <Text className="text-primary-dark text-xl font-psemibold">
+            {item.name}
+          </Text>
         </Pressable>
         <Checkbox
           style={{ margin: 8 }}

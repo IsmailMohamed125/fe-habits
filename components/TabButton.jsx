@@ -10,7 +10,7 @@ export default function TabButton({ title, onTabPress, active }) {
           : "bg-slate-500 py-2 px-4 rounded-3xl my-2"
       }
     >
-      <Text className="items-center text-base text-slate-200 font-semibold">
+      <Text className="items-center text-base text-slate-200 font-psemibold">
         {title}
       </Text>
     </Pressable>
