@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AppLayout() {
   const { isSignedIn } = useAuth();
-  if (!isSignedIn) return <Redirect href={"/(auth)/sign-in"} />;
+  if (!isSignedIn) return <Redirect href={"/(auth)/onboarding"} />;
   return (
     <SafeAreaView className="flex-1 bg-primary-dark">
       <Tabs
@@ -35,11 +35,20 @@ export default function AppLayout() {
           }}
         />
         <Tabs.Screen
-          name="calender"
+          name="analytics"
           options={{
-            title: "Calender",
+            title: "Analytics",
             tabBarIcon: ({ color }) => (
-              <Ionicons name="calendar-outline" size={24} color={color} />
+              <Ionicons name="analytics-outline" size={28} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="journal"
+          options={{
+            title: "Journal",
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="book-outline" size={24} color={color} />
             ),
           }}
         />
