@@ -68,7 +68,11 @@ export default function SignIn() {
 
       <Divider />
 
-      <CustomButton title="Sign In" onPress={onSignInPress} />
+      <CustomButton
+        title="Sign In"
+        onPress={onSignInPress}
+        className="w-full"
+      />
       <Text className="text-center text-slate-300 font-bold">OR</Text>
       <SignInWithOAuth
         icon={

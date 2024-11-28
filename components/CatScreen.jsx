@@ -45,31 +45,27 @@ import { Asset } from "expo-asset";
 const CatScreen = ({ progress }) => {
   const [catImage, setCatImage] = useState(null);
   useEffect(() => {
-    
     const loadImages = async () => {
-      try
-      {await Asset.loadAsync([
-        require("../assets/images/daily-cat/0.gif"),
-        require("../assets/images/daily-cat/10.gif"),
-        require("../assets/images/daily-cat/20.gif"),
-        require("../assets/images/daily-cat/30.gif"),
-        require("../assets/images/daily-cat/40.gif"),
-        require("../assets/images/daily-cat/50.gif"),
-        require("../assets/images/daily-cat/67.gif"),
-        require("../assets/images/daily-cat/80.gif"),
-        require("../assets/images/daily-cat/completed.gif"),
-      ]);
-      console.log("images loaded")
-
-    }
-    catch (error) {
-      console.error("Error preloading images:", error);
-    }
-      
+      try {
+        await Asset.loadAsync([
+          require("../assets/images/daily-cat/0.gif"),
+          require("../assets/images/daily-cat/10.gif"),
+          require("../assets/images/daily-cat/20.gif"),
+          require("../assets/images/daily-cat/30.gif"),
+          require("../assets/images/daily-cat/40.gif"),
+          require("../assets/images/daily-cat/50.gif"),
+          require("../assets/images/daily-cat/67.gif"),
+          require("../assets/images/daily-cat/80.gif"),
+          require("../assets/images/daily-cat/completed.gif"),
+        ]);
+        console.log("images loaded");
+      } catch (error) {
+        console.error("Error preloading images:", error);
+      }
     };
-  
-    loadImages()
-    
+
+    loadImages();
+
     let catImageSource;
     switch (true) {
       case progress === 0:
@@ -107,11 +103,7 @@ const CatScreen = ({ progress }) => {
 
   return (
     <View style={styles.container}>
-      <FastImage
-        key={progress}
-        source={catImage}
-        style={styles.gif}
-      />
+      <FastImage key={progress} source={catImage} style={styles.gif} />
     </View>
   );
 };

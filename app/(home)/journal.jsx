@@ -1,3 +1,4 @@
+
 import { Text, View, StyleSheet } from "react-native";
 import JournalEntries from "../../components/JournalEntries";
 import JournalEntryById from "../../components/JournalEntryById";
