@@ -19,6 +19,7 @@ export default function AddJournalEntry() {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#AED8FF",
+    borderRadius: 10,
     paddingVertical: 12,
     paddingHorizontal: 16,
     width: "100%",

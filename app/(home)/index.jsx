@@ -96,7 +96,7 @@ export default function Index() {
   useEffect(() => {
     const setupDailyNotifications = async () => {
       console.log("Setting up daily notification...");
-      await setupNotification(16, 00);
+      await setupNotification(16, 28);
     };
 
     setupDailyNotifications();

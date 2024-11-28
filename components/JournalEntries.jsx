@@ -64,30 +64,32 @@ export default function JournalEntries() {
   return (
     <View style={styles.container}>
       <FastImage source={catImageSource} style={styles.gif} />
-      <FlatList
-        data={journals}
-        keyExtractor={(item) => item._id}
-        renderItem={({ item }) => (
-          <View style={styles.listItem}>
-            <TouchableOpacity
-              onPress={() => {
-                handleClick(item._id);
-              }}
-              style={styles.itemContent}
-            >
-              <Image
-                style={styles.image}
-                source={require("../assets/images/note-pad.png")}
-                resizeMode="contain"
-              />
-              <View style={styles.textContainer}>
-                <Text style={styles.listItemTitle}>{item.title}</Text>
-                <Text style={styles.listItemSubtitle}>{item.created_at}</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        )}
-      />
+      <View style={styles.container}>
+        <FlatList
+          data={journals}
+          keyExtractor={(item) => item._id}
+          renderItem={({ item }) => (
+            <View style={styles.listItem}>
+              <TouchableOpacity
+                onPress={() => {
+                  handleClick(item._id);
+                }}
+                style={styles.itemContent}
+              >
+                <Image
+                  style={styles.image}
+                  source={require("../assets/images/note-pad.png")}
+                  resizeMode="contain"
+                />
+                <View style={styles.textContainer}>
+                  <Text style={styles.listItemTitle}>{item.title}</Text>
+                  <Text style={styles.listItemSubtitle}>{item.created_at}</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+      </View>
     </View>
   );
 }
@@ -135,7 +137,7 @@ const styles = StyleSheet.create({
     color: "#C9E3FB",
   },
   gif: {
-    width: 390,
+    width: "100%",
     height: 221,
     marginTop: 20,
     borderRadius: 10,

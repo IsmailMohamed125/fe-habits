@@ -1,5 +1,4 @@
-
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView } from "react-native";
 import JournalEntries from "../../components/JournalEntries";
 import JournalEntryById from "../../components/JournalEntryById";
 import {
@@ -14,7 +13,7 @@ export default function Journal() {
   const Stack = createStackNavigator();
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>My Journal</Text>
       </View>
@@ -24,7 +23,7 @@ export default function Journal() {
             <Stack.Navigator
               initialRouteName="JournalEntries"
               screenOptions={{
-                headerShown: false
+                headerShown: false,
               }}
             >
               <Stack.Screen name="JournalEntries" component={JournalEntries} />
@@ -43,7 +42,7 @@ export default function Journal() {
       </View>
 
       <AddJournalEntry />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -54,15 +53,15 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    padding: 16,
-    backgroundColor: "#2E3239", 
+    backgroundColor: "#2E3239",
     alignItems: "center",
     justifyContent: "center",
   },
   headerText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#AED8FF", 
+    color: "#AED8FF",
+    marginTop: 20,
   },
   navigationContainer: {
     flex: 1,
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
   },
   stackHeaderText: {
     fontSize: 18,
-    color: "#2E3239", 
+    color: "#2E3239",
   },
   gif: {
     width: 390,
