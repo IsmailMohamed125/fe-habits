@@ -115,7 +115,7 @@ const CustomBottomSheetModal = forwardRef(({ curHabit, setReload }, ref) => {
               <Pressable onPress={() => handleBtnPress(setShowInfo)}>
                 <BottomSheetView className="flex-row items-center gap-4">
                   <AntDesign name="infocirlce" size={30} color="#26292B" />
-                  <Text className="text-primary-dark text-lg font-semibold">
+                  <Text className="text-primary-dark text-lg font-psemibold">
                     Habit info
                   </Text>
                 </BottomSheetView>
@@ -123,7 +123,7 @@ const CustomBottomSheetModal = forwardRef(({ curHabit, setReload }, ref) => {
               <Pressable onPress={() => handleBtnPress(setShowEdit)}>
                 <BottomSheetView className="flex-row items-center gap-4">
                   <AntDesign name="edit" size={30} color="#26292B" />
-                  <Text className="text-primary-dark text-lg font-semibold">
+                  <Text className="text-primary-dark text-lg font-psemibold">
                     Edit habit
                   </Text>
                 </BottomSheetView>
@@ -131,7 +131,7 @@ const CustomBottomSheetModal = forwardRef(({ curHabit, setReload }, ref) => {
               <Pressable onPress={() => handleDeletePress(setDialogOpen)}>
                 <BottomSheetView className="flex-row items-center gap-4">
                   <AntDesign name="delete" size={30} color="#26292B" />
-                  <Text className="text-primary-dark text-lg font-semibold">
+                  <Text className="text-primary-dark text-lg font-psemibold">
                     Delete habit
                   </Text>
                 </BottomSheetView>

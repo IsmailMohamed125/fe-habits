@@ -75,10 +75,10 @@ export default function SignUp() {
       {!pendingVerification && (
         <>
           <View className="m-4 items-center">
-            <Text className="font-bold text-3xl text-secondary">
+            <Text className="font-pbold text-3xl text-secondary">
               Create your account
             </Text>
-            <Text className="text-base text-secondary-light font-medium">
+            <Text className="text-center text-secondary-light font-pregular">
               Welcome! Please fill in the details to get started.
             </Text>
           </View>
@@ -86,13 +86,13 @@ export default function SignUp() {
             <TextInput
               autoCapitalize="none"
               value={emailAddress}
-              className="p-5 w-full rounded-lg text-primary-dark placeholder:text-slate-500 bg-slate-300"
+              className="p-5 w-full rounded-lg font-pregular text-primary-dark placeholder:text-slate-500 bg-slate-300"
               placeholder="Email..."
               onChangeText={(email) => setEmailAddress(email)}
             />
             <TextInput
               value={password}
-              className="p-5 w-full rounded-lg text-primary-dark placeholder:text-slate-500 bg-slate-300"
+              className="p-5 w-full rounded-lg font-pregular text-primary-dark placeholder:text-slate-500 bg-slate-300"
               placeholder="Password..."
               secureTextEntry={true}
               onChangeText={(password) => setPassword(password)}
@@ -104,7 +104,7 @@ export default function SignUp() {
               onPress={onSignUpPress}
               className="w-full"
             />
-            <Text className="text-center text-slate-300 font-bold">OR</Text>
+            <Text className="text-center text-slate-300 font-pbold">OR</Text>
             <SignInWithOAuth
               icon={
                 <MaterialCommunityIcons
@@ -118,11 +118,11 @@ export default function SignUp() {
             <Divider />
 
             <View className="w-full items-center justify-center">
-              <Text className="font-semibold text-slate-300">
+              <Text className="font-psemibold text-slate-300">
                 Already have an account?
               </Text>
               <Link href="/sign-in">
-                <Text className="font-bold text-secondary-light">Sign in</Text>
+                <Text className="font-pbold text-secondary-light">Sign in</Text>
               </Link>
             </View>
           </View>

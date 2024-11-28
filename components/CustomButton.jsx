@@ -7,7 +7,7 @@ export default function CustomButton({ title, onPress, className, icon }) {
       className={`p-3 rounded-lg bg-secondary ${className}`}
     >
       {icon && icon}
-      <Text className="font-semibold text-lg text-center text-primary-dark">
+      <Text className="font-psemibold text-lg text-center text-primary-dark">
         {title}
       </Text>
     </TouchableOpacity>
