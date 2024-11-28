@@ -40,6 +40,13 @@ const SignInWithOAuth = ({ icon }) => {
     }
   }, []);
 
-  return <CustomButton title="Google" onPress={onPress} icon={icon} />;
+  return (
+    <CustomButton
+      title="Google"
+      onPress={onPress}
+      icon={icon}
+      className="w-full"
+    />
+  );
 };
 export default SignInWithOAuth;

@@ -29,6 +29,13 @@ export default function AuthLayout() {
             },
           }}
         />
+        <Stack.Screen
+          name="onboarding"
+          options={{
+            title: "Welcome",
+            headerShown: false,
+          }}
+        />
       </Stack>
     </SafeAreaView>
   );

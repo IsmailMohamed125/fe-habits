@@ -1,14 +1,13 @@
 import { Text, TouchableOpacity } from "react-native";
 
-export default function CustomButton({ title, onPress, style, icon }) {
-  const defaultStyles = "p-3 w-full rounded-lg bg-secondary ";
+export default function CustomButton({ title, onPress, className, icon }) {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className={style ? `${style} ${defaultStyles}` : `${defaultStyles}`}
+      className={`p-3 rounded-lg bg-secondary ${className}`}
     >
       {icon && icon}
-      <Text className="font-semibold text-lg text-center text-primary-dark  ">
+      <Text className="font-semibold text-lg text-center text-primary-dark">
         {title}
       </Text>
     </TouchableOpacity>

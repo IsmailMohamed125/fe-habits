@@ -1,6 +1,6 @@
 import { TextInput, Platform, View, Text, Alert } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import { KeyboardAvoidingView } from "react-native";
 import CustomButton from "../../components/CustomButton";
@@ -99,7 +99,11 @@ export default function SignUp() {
             />
             <Divider />
 
-            <CustomButton title="Sign Up" onPress={onSignUpPress} />
+            <CustomButton
+              title="Sign Up"
+              onPress={onSignUpPress}
+              className="w-full"
+            />
             <Text className="text-center text-slate-300 font-bold">OR</Text>
             <SignInWithOAuth
               icon={
@@ -111,6 +115,16 @@ export default function SignUp() {
                 />
               }
             />
+            <Divider />
+
+            <View className="w-full items-center justify-center">
+              <Text className="font-semibold text-slate-300">
+                Already have an account?
+              </Text>
+              <Link href="/sign-in">
+                <Text className="font-bold text-secondary-light">Sign in</Text>
+              </Link>
+            </View>
           </View>
         </>
       )}
